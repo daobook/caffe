@@ -15,10 +15,10 @@ class MyCaffeRecipe(ConanFile):
         "openblas/0.3.17"
     ]
     default_options = {
-        "boost:without_python": True,
-        "boost:shared": False,
-        "protobuf:shared": False,
-        "openblas:shared": False
+        "boost/*:without_python": True,
+        "boost/*:shared": False,
+        "protobuf/*:shared": False,
+        "openblas/*:shared": False
     }
 
     def layout(self):
