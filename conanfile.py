@@ -12,7 +12,9 @@ class MyCaffeRecipe(ConanFile):
         "protobuf/3.20.3",
         "zlib/1.3.1",
         "bzip2/1.0.8",
-        "openblas/0.3.17"
+        "openblas/0.3.25",
+        'glog/0.5.0',
+        'gflags/2.2.2'
     ]
     default_options = {
         "boost/*:without_python": False,
