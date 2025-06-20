@@ -29,15 +29,15 @@ jobs:
     - name: Install cibuildwheel
       run: pip install cibuildwheel conan
         
-    - name: Install System Requirements
-      if: runner.os == 'Macos'
-      shell: bash
-      run: |
-        brew install sunnycase/core/libomp@11.1.0
+    # - name: Install System Requirements
+    #   if: runner.os == 'Macos'
+    #   shell: bash
+    #   run: |
+    #     brew install sunnycase/core/libomp@11.1.0
         
-    - name: Add msbuild to PATH
-      if: runner.os == 'Windows'
-      uses: ilammy/msvc-dev-cmd@v1.9.0
+    # - name: Add msbuild to PATH
+    #   if: runner.os == 'Windows'
+    #   uses: ilammy/msvc-dev-cmd@v1.9.0
       
     - name: Build wheel
       run: |
