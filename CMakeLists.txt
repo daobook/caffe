@@ -47,10 +47,10 @@ caffe_option(USE_HDF5 "Build with hdf5" ON)
 include(cmake/configure-conan.cmake)
 include(cmake/conan.cmake)
 
-if(NOT CONAN_EXPORTED) 
-    conan_check()
-    conan_add_remote(NAME conancenter URL https://center2.conan.io FORCE)
-endif()
+#if(NOT CONAN_EXPORTED) 
+#    conan_check()
+#    conan_add_remote(NAME conancenter URL https://center2.conan.io FORCE)
+#endif()
 
 conan_cmake_run(CONANFILE conanfile.py
                 BASIC_SETUP TARGETS
