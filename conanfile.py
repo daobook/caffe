@@ -67,7 +67,11 @@ class caffeConan(ConanFile):
 
     def cmake_configure(self):
         cmake = CMake(self)
-        cmake.configure()
+        cmake.configure(
+            variables={
+                "CMAKE_POLICY_VERSION_MINIMUM": "3.5"
+            }
+        )
         return cmake
 
     def build(self):
