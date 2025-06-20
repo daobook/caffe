@@ -30,7 +30,7 @@ class MyCaffeRecipe(ConanFile):
     def generate(self):
         tc = CMakeToolchain(self)
         tc.cache_variables["CMAKE_BUILD_TYPE"] = self.settings.build_type
-        tc.cache_variables["CMAKE_POLICY_VERSION_MINIMUM"] = "3.5"
+        tc.cache_variables["CMAKE_POLICY_VERSION_MINIMUM"] = "3.18"
         tc.generate()
 
         deps = CMakeDeps(self)
