@@ -13,7 +13,7 @@
 # limitations under the License.
 # pylint: disable=invalid-name, unused-argument, import-outside-toplevel
 
-from conans import ConanFile, CMake, tools
+from conans import ConanFile, CMake
 
 
 class caffeConan(ConanFile):

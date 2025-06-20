@@ -2,9 +2,7 @@
 
 from distutils.core import setup
 from distutils.command.install_data import install_data
-import imp
-from posixpath import dirname
-from setuptools import find_packages, setup, Extension
+from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 from setuptools.command.install_lib import install_lib
 from setuptools.command.install_scripts import install_scripts
@@ -249,21 +247,21 @@ def find_version():
 
 
 requirements = [
-    "numpy>=1.7.1",
-    "scipy>=0.13.2",
-    "scikit-image>=0.9.3",
-    "protobuf>=2.5.0",
-    "six>=1.1.0"
+    "numpy",
+    "scipy",
+    "scikit-image",
+    "protobuf",
+    "six"
 ]
 
-setup(name='daobook-caffe',
+setup(name='pycaffe',
       version=find_version(),
-      author="sunnycase",
-      author_email="sunnycase@live.cn",
-      maintainer="sunnycase",
+      author="xinetzone",
+      author_email="735613050@qq.com",
+      maintainer="xinetzone",
       packages=['caffe', 'caffe.proto'],
       package_dir={'': 'python'},
-      python_requires=">=3.6",
+      python_requires=">=3.10",
       install_requires=requirements,
       ext_modules=[CMakeExtension(name="caffe._caffe", sourcedir='.')],
       description="Caffe: a fast open framework for deep learning.",
@@ -274,10 +272,6 @@ setup(name='daobook-caffe',
       classifiers=[
           "Programming Language :: C++",
           "Programming Language :: Python :: 3",
-          "Programming Language :: Python :: 3.6",
-          "Programming Language :: Python :: 3.7",
-          "Programming Language :: Python :: 3.8",
-          "Programming Language :: Python :: 3.9",
           "Programming Language :: Python :: 3.12",
           "Operating System :: OS Independent", ],
       cmdclass={
