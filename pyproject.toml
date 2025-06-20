@@ -50,6 +50,7 @@ before-all = [
   "yum install graphviz -y",
   "pip install conan",
   "conan profile detect --force",
+  "conan remote add center2 https://center2.conan.io",
   "echo 'compiler.libcxx=libstdc++11' >> ~/.conan2/profiles/default"
 ]
 [tool.cibuildwheel.macos]
