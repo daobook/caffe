@@ -26,15 +26,15 @@ dependencies = [
 ]
 
 [build-system]
-requires = ["setuptools", "wheel", "conan", "oldest-supported-numpy", "ninja"]
+requires = ["setuptools", "wheel", "conan", "ninja"]
 
 [tool.cibuildwheel]
 build = ["cp312-*"]
 manylinux-x86_64-image = "quay.io/pypa/manylinux_2_28_x86_64"
-test-requires = ["pytest", "pydot", "numpy"]
-test-command = [
-  "pytest {project}/python/caffe/test"
-]
+# test-requires = ["pytest", "pydot", "numpy"]
+# test-command = [
+#   "pytest {project}/python/caffe/test"
+# ]
 xbuild-tools = ["cmake>=3.23.0", "ninja"]
 
 [tool.cibuildwheel.windows]

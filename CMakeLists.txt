@@ -143,3 +143,10 @@ caffe_print_configuration_summary()
 # ---[ Export configs generation
 caffe_generate_export_configs()
 
+# 在合适的位置添加
+add_compile_options(
+    -Wno-unused-variable
+    -Wno-array-bounds
+    -Wno-unused-but-set-variable
+)
+
