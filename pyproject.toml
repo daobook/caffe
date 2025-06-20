@@ -51,7 +51,7 @@ before-all = [
 archs = ["x86_64"]
 before-all = [
   "yum update",
-  "yum install graphviz -y",
+  "yum install graphviz python3-devel -y",
   "pip install conan",
   "conan remote add conancenter https://center2.conan.io --force",
   "conan profile detect --force",
