@@ -38,7 +38,7 @@ class caffeConan(ConanFile):
         self.requires('leveldb/1.22')
         self.requires('glog/0.5.0')
         self.requires('gflags/2.2.2')
-        self.requires('protobuf/3.17.1')
+        self.requires('protobuf/3.20.3')
 
         if self.settings.os != 'Macos':
             self.requires('openblas/0.3.17')

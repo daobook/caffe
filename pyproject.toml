@@ -46,7 +46,7 @@ before-all = [
 archs = ["x86_64"]
 before-all = [
   "yum update",
-  "yum install graphviz -y",
+  "yum install graphviz cmake -y",
   "pip install conan",
   "conan profile detect --force",
   "echo 'compiler.libcxx=libstdc++11' >> ~/.conan2/profiles/default"
