@@ -49,7 +49,7 @@ include(cmake/conan.cmake)
 
 if(NOT CONAN_EXPORTED) 
     conan_check()
-    conan_add_remote(NAME sunnycase URL https://conan.sunnycase.moe INDEX 0)
+    conan_add_remote(NAME pycaffe URL https://github.com/daobook/caffe INDEX 0)
 endif()
 
 conan_cmake_run(CONANFILE conanfile.py
