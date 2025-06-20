@@ -2,9 +2,9 @@ name: python-build
 
 on:
   push:
-    branches: [ nncase ]
+    branches: [ dev ]
   pull_request:
-    branches: [ nncase ]
+    branches: [ dev ]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -24,7 +24,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v2.2.1
       with:
-        python-version: 3.7
+        python-version: 3.12
 
     - name: Install cibuildwheel
       run: pip install cibuildwheel

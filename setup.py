@@ -256,7 +256,7 @@ requirements = [
     "six>=1.1.0"
 ]
 
-setup(name='kendryte-caffe',
+setup(name='daobook-caffe',
       version=find_version(),
       author="sunnycase",
       author_email="sunnycase@live.cn",
@@ -267,10 +267,10 @@ setup(name='kendryte-caffe',
       install_requires=requirements,
       ext_modules=[CMakeExtension(name="caffe._caffe", sourcedir='.')],
       description="Caffe: a fast open framework for deep learning.",
-      url='https://github.com/kendryte/caffe',
+      url='https://github.com/daobook/caffe',
       long_description=open("README.md", 'r', encoding='utf8').read(),
       long_description_content_type="text/markdown",
-      keywords="kendryte, caffe",
+      keywords="daobook, caffe",
       classifiers=[
           "Programming Language :: C++",
           "Programming Language :: Python :: 3",
@@ -278,6 +278,7 @@ setup(name='kendryte-caffe',
           "Programming Language :: Python :: 3.7",
           "Programming Language :: Python :: 3.8",
           "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.12",
           "Operating System :: OS Independent", ],
       cmdclass={
           'build_ext': BuildCMakeExt,
