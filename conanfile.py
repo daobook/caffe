@@ -33,12 +33,13 @@ class caffeConan(ConanFile):
 
     def requirements(self):
         # self.requires('opencv/4.5.1')
+        self.requires('crc32c/1.3.1')
         self.requires('boost/1.81.0')
-        self.requires('hdf5/1.12.0')
-        self.requires('lmdb/0.9.29')
-        self.requires('leveldb/1.22')
-        self.requires('glog/0.5.0')
-        self.requires('gflags/2.2.2')
+        # self.requires('hdf5/1.12.0')
+        # self.requires('lmdb/0.9.29')
+        # self.requires('leveldb/1.22')
+        # self.requires('glog/0.5.0')
+        # self.requires('gflags/2.2.2')
         self.requires('protobuf/3.20.3')
 
         if self.settings.os != 'Macos':
