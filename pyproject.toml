@@ -7,7 +7,6 @@ authors = [
 ]
 requires-python = ">=3.10"
 readme = "README.md"
-license = {file = "LICENSE"}
 maintainers = [
   {name = "xinetzone", email = "735613050@qq.com"},
 ]
@@ -27,7 +26,7 @@ dependencies = [
 ]
 
 [build-system]
-requires = ["setuptools>=42", "wheel", "conan", "oldest-supported-numpy", "ninja"]
+requires = ["setuptools", "wheel", "conan", "oldest-supported-numpy", "ninja"]
 
 [tool.cibuildwheel]
 build = ["cp312-*"]
