@@ -44,7 +44,7 @@ before-all = [
   "pip install conan",
   "conan remote add conancenter https://center2.conan.io --force",
   "conan profile detect --force",
-  "conan install . --build=missing"
+  "conan install . --build=missing --settings compiler.cppstd=17"
 ]
 
 [tool.cibuildwheel.linux]
@@ -55,7 +55,7 @@ before-all = [
   "pip install conan",
   "conan remote add conancenter https://center2.conan.io --force",
   "conan profile detect --force",
-  "conan install . --build=missing"
+  "conan install . --build=missing --settings compiler.cppstd=17"
 ]
 [tool.cibuildwheel.macos]
 archs = ["x86_64"]
@@ -64,7 +64,7 @@ before-all = [
   "pip install conan",
   "conan remote add conancenter https://center2.conan.io --force",
   "conan profile detect --force",
-  "conan install . --build=missing"
+  "conan install . --build=missing --settings compiler.cppstd=17"
 ]
 
 [tool.cibuildwheel.macos.environment]
