@@ -33,7 +33,7 @@ class caffeConan(ConanFile):
 
     def requirements(self):
         # self.requires('opencv/4.5.1')
-        self.requires('crc32c/1.3.1')
+        # self.requires('crc32c/1.3.1')
         self.requires('boost/1.81.0')
         # self.requires('hdf5/1.12.0')
         # self.requires('lmdb/0.9.29')
