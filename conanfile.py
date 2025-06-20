@@ -32,7 +32,7 @@ class caffeConan(ConanFile):
     }
 
     def requirements(self):
-        self.requires('opencv/4.5.1')
+        # self.requires('opencv/4.5.1')
         self.requires('boost/1.76.0')
         self.requires('hdf5/1.12.0')
         self.requires('lmdb/0.9.29')
@@ -52,16 +52,16 @@ class caffeConan(ConanFile):
 
     def configure(self):
         self.options["glog"].with_gflags = False
-        self.options["opencv"].contrib = False
-        self.options["opencv"].with_webp = False
-        self.options["opencv"].with_openexr = False
-        self.options["opencv"].with_eigen = False
-        self.options["opencv"].with_quirc = False
-        self.options["opencv"].dnn = False
+        # self.options["opencv"].contrib = False
+        # self.options["opencv"].with_webp = False
+        # self.options["opencv"].with_openexr = False
+        # self.options["opencv"].with_eigen = False
+        # self.options["opencv"].with_quirc = False
+        # self.options["opencv"].dnn = False
         self.options["boost"].shared = False
         self.options["boost"].without_python = False
-        if self.settings.os == 'Linux':
-            self.options["opencv"].with_gtk = False
+        # if self.settings.os == 'Linux':
+        #     self.options["opencv"].with_gtk = False
         if self.settings.os == 'Macos': # workaround for https://github.com/conan-io/conan-center-index/issues/4950
             self.options["boost"].numa = False
 
