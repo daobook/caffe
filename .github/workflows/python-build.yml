@@ -41,7 +41,6 @@ jobs:
       
     - name: Build wheel
       run: |
-        conan remote add pycaffe https://github.com/daobook/caffe --index 0
         python -m cibuildwheel --output-dir wheelhouse
         
     - name: Upload a Build Artifact
