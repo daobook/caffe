@@ -15,7 +15,7 @@ class MyCaffeRecipe(ConanFile):
         "openblas/0.3.17"
     ]
     default_options = {
-        "boost/*:without_python": True,
+        "boost/*:without_python": False,
         "boost/*:shared": False,
         "protobuf/*:shared": False,
         "openblas/*:shared": False
