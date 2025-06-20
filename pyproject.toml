@@ -37,15 +37,15 @@ test-command = [
 ]
 xbuild-tools = ["cmake>=3.23.0", "ninja"]
 
-[tool.cibuildwheel.windows]
-archs = ["AMD64"]
-before-all = [
-  "choco install graphviz",
-  "pip install conan",
-  "conan remote add conancenter https://center2.conan.io --force",
-  "conan profile detect --force",
-  "conan install . --build=missing --settings compiler.cppstd=17"
-]
+# [tool.cibuildwheel.windows]
+# archs = ["AMD64"]
+# before-all = [
+#   "choco install graphviz",
+#   "pip install conan",
+#   "conan remote add conancenter https://center2.conan.io --force",
+#   "conan profile detect --force",
+#   "conan install . --build=missing --settings compiler.cppstd=17"
+# ]
 
 [tool.cibuildwheel.linux]
 archs = ["x86_64"]
