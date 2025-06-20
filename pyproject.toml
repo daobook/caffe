@@ -35,6 +35,7 @@ test-requires = ["pytest", "pydot", "numpy"]
 test-command = [
   "pytest {project}/python/caffe/test"
 ]
+xbuild-tools = ["cmake", "ninja"]
 
 [tool.cibuildwheel.windows]
 archs = ["AMD64"]
