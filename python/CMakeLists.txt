@@ -1,3 +1,4 @@
+cmake_minimum_required(VERSION 3.18)
 if(NOT HAVE_PYTHON)
   message(STATUS "Python interface is disabled or not all required dependencies found. Building without it...")
   return()

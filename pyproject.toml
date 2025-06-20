@@ -35,19 +35,19 @@ test-requires = ["pytest", "pydot", "numpy"]
 test-command = [
   "pytest {project}/python/caffe/test"
 ]
-xbuild-tools = ["cmake", "ninja"]
+xbuild-tools = ["cmake>=3.23.0", "ninja"]
 
 [tool.cibuildwheel.windows]
 archs = ["AMD64"]
 before-all = [
-  "choco install graphviz cmake"
+  "choco install graphviz"
 ]
 
 [tool.cibuildwheel.linux]
 archs = ["x86_64"]
 before-all = [
   "yum update",
-  "yum install graphviz cmake -y",
+  "yum install graphviz -y",
   "pip install conan",
   "conan profile detect --force",
   "echo 'compiler.libcxx=libstdc++11' >> ~/.conan2/profiles/default"
@@ -55,7 +55,7 @@ before-all = [
 [tool.cibuildwheel.macos]
 archs = ["x86_64"]
 before-all = [
-  "brew install graphviz cmake"
+  "brew install graphviz"
 ]
 
 [tool.cibuildwheel.macos.environment]
