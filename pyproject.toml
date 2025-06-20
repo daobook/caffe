@@ -40,7 +40,7 @@ xbuild-tools = ["cmake", "ninja"]
 [tool.cibuildwheel.windows]
 archs = ["AMD64"]
 before-all = [
-  "choco install graphviz"
+  "choco install graphviz cmake"
 ]
 
 [tool.cibuildwheel.linux]
@@ -55,7 +55,7 @@ before-all = [
 [tool.cibuildwheel.macos]
 archs = ["x86_64"]
 before-all = [
-  "brew install graphviz"
+  "brew install graphviz cmake"
 ]
 
 [tool.cibuildwheel.macos.environment]
