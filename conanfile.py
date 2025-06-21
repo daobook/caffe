@@ -9,7 +9,7 @@ class CaffeConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "CMakeToolchain", "CMakeDeps"
     requires = [
-        "boost/1.81.0",
+        "boost/1.88.0",
         "protobuf/3.21.12",
         "zlib/1.3.1",
         "bzip2/1.0.8",
