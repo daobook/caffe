@@ -5,7 +5,7 @@ description = "Caffe: a fast open framework for deep learning."
 authors = [
     {name = "xinetzone", email = "735613050@qq.com"},
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 readme = "README.md"
 maintainers = [
   {name = "xinetzone", email = "735613050@qq.com"},
@@ -29,7 +29,7 @@ dependencies = [
 requires = ["setuptools", "wheel", "conan", "ninja"]
 
 [tool.cibuildwheel]
-build = ["cp312-*"]
+build = ["cp39-*", "cp312-*"]
 manylinux-x86_64-image = "quay.io/pypa/manylinux_2_28_x86_64"
 # test-requires = ["pytest", "pydot", "numpy"]
 # test-command = [
