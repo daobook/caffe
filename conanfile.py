@@ -18,7 +18,7 @@ class CaffeConan(ConanFile):
         "gflags/2.2.2",
     ]
     default_options = {
-        "boost/*:without_python": False,
+        "boost/*:without_python": True,
         "boost/*:shared": False,
         "protobuf/*:shared": False,
     }
