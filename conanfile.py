@@ -1,5 +1,6 @@
 from conan import ConanFile
 from conan.tools.cmake import CMake, CMakeToolchain, CMakeDeps
+from conan.tools.cmake import cmake_layout
 from conan.tools.build import check_min_cppstd
 import os
 
@@ -10,22 +11,23 @@ class CaffeConan(ConanFile):
     generators = "CMakeToolchain", "CMakeDeps"
     requires = [
         "boost/1.88.0",
-        "protobuf/3.21.12",
+        "protobuf/6.30.1",
         "zlib/1.3.1",
         "bzip2/1.0.8",
-        "openblas/0.3.25"
+        "glog/0.7.1",
+        "gflags/2.2.2",
     ]
     default_options = {
         "boost/*:without_python": False,
         "boost/*:shared": False,
         "protobuf/*:shared": False,
-        "openblas/*:shared": False
     }
 
     def build_requirements(self):
         self.tool_requires("cmake/[>=3.22]")
 
     def layout(self):
+        cmake_layout(self)
         self.folders.source = "src"
         self.folders.build = "build"
 

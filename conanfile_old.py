@@ -13,7 +13,9 @@ class CaffeConan(ConanFile):
         "boost/1.81.0",
         "protobuf/3.21.12",
         "zlib/1.3.1",
-        "bzip2/1.0.8"
+        "bzip2/1.0.8",
+        "glog/0.7.1",
+        "gflags/2.2.2",
     ]
     default_options = {
         "boost:shared": False,

@@ -375,7 +375,7 @@ ifeq ($(WITH_PYTHON_LAYER), 1)
 endif
 
 # BLAS configuration (default = ATLAS)
-BLAS ?= open
+BLAS ?= atlas
 ifeq ($(BLAS), mkl)
 	# MKL
 	LIBRARIES += mkl_rt

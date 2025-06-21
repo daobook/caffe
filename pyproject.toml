@@ -55,7 +55,7 @@ before-all = [
   "pip install conan",
   "conan remote add conancenter https://center2.conan.io --force",
   "conan profile detect --force",
-  "conan install . --build=missing --settings compiler.cppstd=14"
+  "conan install . --build=missing"
 ]
 [tool.cibuildwheel.macos]
 archs = ["x86_64"]
