@@ -1,53 +1,40 @@
-name: python-build
+name: Build Caffe
 
 on:
   push:
-    branches: [ dev ]
+    branches: [main]
   pull_request:
-    branches: [ dev ]
-
-env:
-  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
-  BUILD_TYPE: Release
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        # os: [ubuntu-22.04,windows-2019,macos-10.15]
-        os: [ubuntu-22.04]
-          
+    runs-on: ubuntu-22.04
+    container:
+      image: quay.io/rockylinux/rockylinux:8
     steps:
-    - uses: actions/checkout@v2
-    - uses: seanmiddleditch/gha-setup-ninja@master
-    
-    - name: Setup Python
-      uses: actions/setup-python@main
-      with:
-        python-version: 3.12
+      - uses: actions/checkout@v3
 
-    - name: Install cibuildwheel
-      run: pip install cibuildwheel conan
-        
-    # - name: Install System Requirements
-    #   if: runner.os == 'Macos'
-    #   shell: bash
-    #   run: |
-    #     brew install sunnycase/core/libomp@11.1.0
-        
-    # - name: Add msbuild to PATH
-    #   if: runner.os == 'Windows'
-    #   uses: ilammy/msvc-dev-cmd@v1.9.0
-      
-    - name: Build wheel
-      run: |
-        export LD_LIBRARY_PATH=/opt/rh/gcc-toolset-14/root/usr/lib64:$LD_LIBRARY_PATH
-        python -m cibuildwheel --output-dir wheelhouse
-        
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: pycaffe
-        path: ${{github.workspace}}/wheelhouse
-        if-no-files-found: error
+      - name: Set up development dependencies
+        run: |
+          yum update -y
+          yum install -y gcc gcc-c++ python3-devel graphviz git make wget which \
+                         libstdc++ libstdc++-devel centos-release-scl
+          yum install -y rh-gcc-toolset-14 # 如果可用
+          echo "source /opt/rh/gcc-toolset-14/enable" >> ~/.bashrc
+          source /opt/rh/gcc-toolset-14/enable
+          export LD_LIBRARY_PATH=/opt/rh/gcc-toolset-14/root/usr/lib64:$LD_LIBRARY_PATH
+
+      - name: Install Conan & detect profile
+        run: |
+          pip install conan
+          conan remote add conancenter https://center2.conan.io --force
+          conan profile detect --force
+
+      - name: Install project dependencies
+        run: |
+          export LD_LIBRARY_PATH=/opt/rh/gcc-toolset-14/root/usr/lib64:$LD_LIBRARY_PATH
+          conan install . --build=missing -o boost:without_python=True
+
+      - name: Build wheel
+        run: |
+          export LD_LIBRARY_PATH=/opt/rh/gcc-toolset-14/root/usr/lib64:$LD_LIBRARY_PATH
+          python3 -m build --wheel
