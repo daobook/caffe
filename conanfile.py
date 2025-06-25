@@ -1,49 +1,63 @@
 from conan import ConanFile
-from conan.tools.cmake import CMake, CMakeToolchain, CMakeDeps
-from conan.tools.cmake import cmake_layout
-from conan.tools.build import check_min_cppstd
-import os
+from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
 
-class CaffeConan(ConanFile):
-    name = "caffe_project"
-    version = "0.1"
-    settings = "os", "compiler", "build_type", "arch"
-    generators = "CMakeToolchain", "CMakeDeps"
+class CaffeRecipe(ConanFile):
+    name = "pycaffe"
+    version = "0.0.1"
+    package_type = "library"
+
+    # 可选元数据
+    license = "LICENSE"
+    author = "xinetzone (735613050@qq.com)"
+    # homepage = "https://caffe.berkeleyvision.org/"
+    url = "https://github.com/daobook/caffe.git"
+    description = "Caffe: a fast open framework for deep learning."
+    topics = ('daobook', 'caffe')
+
+    # 用于主机环境中常规依赖项（如库）的字符串列表或元组。
     requires = [
-        "boost/1.88.0",
-        "protobuf/6.30.1",
-        "zlib/1.3.1",
-        "bzip2/1.0.8",
-        "glog/0.7.1",
-        "gflags/2.2.2",
+        "boost/[>1.80]",
+        "protobuf/[>3.17]",
+        "zlib/[>=1.2.11 <2]",
+        "glog/[>=0.7.1]",
+        "gflags/[>=2.2.2]",
     ]
-    default_options = {
-        "boost/*:without_python": True,
-        "boost/*:shared": False,
-        "protobuf/*:shared": False,
-    }
 
-    def build_requirements(self):
-        self.tool_requires("cmake/[>=3.22]")
+    # 二进制配置
+    settings = "os", "compiler", "build_type", "arch"
+    options = {"shared": [True, False], "fPIC": [True, False]}
+    default_options = {"shared": False, "fPIC": True}
+    # 源文件与本 recipe 位于同一位置，请将它们复制到 recipe 中。
+    exports_sources = (
+        "CMakeLists.txt", "src/*", "include/*", 
+        "cmake/*", "python/*"
+    )
+
+    def config_options(self):
+        if self.settings.os == "Windows":
+            self.options.rm_safe("fPIC")
+
+    def configure(self):
+        if self.options.shared:
+            self.options.rm_safe("fPIC")
 
     def layout(self):
         cmake_layout(self)
-        self.folders.source = "src"
-        self.folders.build = "build"
-
+    
     def generate(self):
+        deps = CMakeDeps(self)
+        deps.generate()
         tc = CMakeToolchain(self)
-        tc.cache_variables["CMAKE_BUILD_TYPE"] = self.settings.build_type
-        tc.cache_variables["CMAKE_POLICY_VERSION_MINIMUM"] = "3.18"
-        tc.cache_variables["CMAKE_BUILD_PARALLEL_LEVEL"] = "2"
         tc.generate()
-        CMakeDeps(self).generate()
-
-    def validate(self):
-        check_min_cppstd(self, 14)
 
     def build(self):
         cmake = CMake(self)
         cmake.configure()
-        # 限制最大并发线程数为 2，防止 OpenBLAS 构建内存爆
-        cmake.build(args=["-j2", "--verbose"])
+        cmake.build()
+
+    def package(self):
+        cmake = CMake(self)
+        cmake.install()
+
+    # def package_info(self):
+    #     self.cpp_info.libs = ["hello"]
