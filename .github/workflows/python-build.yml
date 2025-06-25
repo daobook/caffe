@@ -42,7 +42,6 @@ jobs:
       
     - name: Build wheel
       run: |
-        apt-get install -y libunwind-dev
         python -m cibuildwheel --output-dir wheelhouse
         
     - name: Upload a Build Artifact
