@@ -25,6 +25,8 @@ class CaffeRecipe(ConanFile):
 
     # 二进制配置
     settings = "os", "compiler", "build_type", "arch"
+    conf = "tools.cmake.cmaketoolchain:generator=Ninja"
+
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": False, "fPIC": True}
     # 源文件与本 recipe 位于同一位置，请将它们复制到 recipe 中。

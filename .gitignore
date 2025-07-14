@@ -101,3 +101,6 @@ LOCK
 LOG*
 CURRENT
 MANIFEST-*
+
+# conan
+CMakeUserPresets.json
